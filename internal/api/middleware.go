@@ -207,9 +207,9 @@ func (a *API) isValidExternalHost(w http.ResponseWriter, req *http.Request) (con
 	baseUrl := config.API.ExternalURL
 	xForwardedHost := req.Header.Get("X-Forwarded-Host")
 	xForwardedProto := req.Header.Get("X-Forwarded-Proto")
-	if xForwardedHost != "" && xForwardedProto != "" {
+	if false && xForwardedHost != "" && xForwardedProto != "" {
 		baseUrl = fmt.Sprintf("%s://%s", xForwardedProto, xForwardedHost)
-	} else if req.URL.Scheme != "" && req.URL.Hostname() != "" {
+	} else if false && req.URL.Scheme != "" && req.URL.Hostname() != "" {
 		baseUrl = fmt.Sprintf("%s://%s", req.URL.Scheme, req.URL.Hostname())
 	}
 	if u, err = url.ParseRequestURI(baseUrl); err != nil {
